@@ -7,7 +7,6 @@ const
     BUCKET_AVATARES,
     BUCKET_PUBLICACOES} = process.env;
 
-
 const Cosmic = cosmicjs();
 const bucketAvatares= Cosmic.bucket({
     slug: BUCKET_AVATARES,
@@ -33,7 +32,7 @@ const uploadImagemCosmic = async (req : any) => {
 
         if(req.url && req.url.includes('publicacao')){
             return await bucketPublicacoes.addMedia({media : media_object});
-        } else{
+        }else{
         return await bucketAvatares.addMedia({media : media_object});
     
         }

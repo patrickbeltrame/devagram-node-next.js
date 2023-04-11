@@ -11,7 +11,6 @@ import { UsuarioModel } from "../../models/UsuarioModel";
 const handler = nc ()
     .use(upload.single('file'))
     .post (async (req : any, res : NextApiResponse<RespostaPadraoMsg>) => {
-        
         try{
 
             const {userId} = req.query;
@@ -43,13 +42,11 @@ const handler = nc ()
                     foto : image.media.url,
                     data : new Date()
                 }
-
+                
                 await PublicacaoModel.create(publicacao);
-                return res.status(200).json({erro : 'Publicacao criada com sucesso'})
-
-    
-                return res.status(200).json({erro : 'publicacao esta valida'})
-    
+                return res.status(200).json({msg : 'Publicacao criada com sucesso'})
+                
+        
         }catch(e){
             console.log(e);
             return res.status(400).json({erro : 'Erro ao cadastrar publicacao'})
